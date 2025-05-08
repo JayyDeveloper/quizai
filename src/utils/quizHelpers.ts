@@ -153,7 +153,16 @@ export const generateQuestions = async (content: string): Promise<Question[]> =>
     
     Content: ${content}`;
 
-    const response = await openai.chat.completions.create({
+const response = await fetch('/.netlify/functions/generate-quiz', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ content })
+});
+
+const data = await response.json();
+console.log("Quiz:", data);    
+
+    {/* const response = await openai.chat.completions.create({
       model: "gpt-4-turbo-preview",
       messages: [
         {
@@ -193,6 +202,7 @@ export const generateQuestions = async (content: string): Promise<Question[]> =>
     throw error;
   }
 };
+*/}
 
 export const calculatePercentage = (score: number, total: number): number => {
   if (total === 0) return 0;
