@@ -4,10 +4,10 @@ import * as mammoth from 'mammoth';
 import * as pdfjs from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.mjs';
 
-const openai = new OpenAI({
+{/*const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true
-});
+}); */}
 
 export const generateId = (): string => {
   return Math.random().toString(36).substring(2, 15);
